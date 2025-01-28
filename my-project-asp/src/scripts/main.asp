@@ -1,20 +1,19 @@
- <%
- Response.Write("Welcome to the Employer Portal")
- Dim username
- username = Request("username")
- ' Potential SQL Injection vulnerability
- sql = "SELECT * FROM users WHERE username = '" & username & "'"
+<%
+Response.Write("Welcome to the Employer Portal")
+Dim username, sql, rs
+username = Request("username")
 
-' Check if the username exists in the simulated database
-If users.Exists(username) Then
-    Response.Write("Hello, " & users(username))
+' Use parameterized query to prevent SQL Injection
+Set cmd = Server.CreateObject("ADODB.Command")
+cmd.ActiveConnection = conn
+cmd.CommandText = "SELECT * FROM users WHERE username = ?"
+cmd.Parameters.Append cmd.CreateParameter("@username", 200, 1, 50, username)
+
+Set rs = cmd.Execute()
+
+If Not rs.EOF Then
+    Response.Write("Hello, " & rs("name"))
 Else
     Response.Write("User not found.")
 End If
- Ser rs = conn.Execute(sql)
- If Not rs.EOF Then
-     Response.Write("Hello, " & rs("name"))
- Else
-     Response.Write("User not found.")
- End If
- %>
+%>
