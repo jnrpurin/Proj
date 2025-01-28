@@ -1,32 +1,28 @@
-# My Classic ASP Project
+# my-dotnet-core-project
 
-This is a simple project developed in Classic ASP. Below are the instructions for installation and usage.
+This is a sample project developed in .NET Core to manage users.
 
 ## Project Structure
 
-```
-my-classic-asp-project
-├── src
-│   ├── index.asp          # Application entry point
-│   ├── includes
-│   │   └── header.asp     # Page header
-│   └── scripts
-│       └── main.asp       # Main script logic
-├── web.config             # ASP application configuration
-└── README.md              # Project documentation
-```
+- **Controllers**: Contains the controllers that manage the requests.
+    - `UsersController.cs`: Controller for the users page.
 
-## Installation Instructions
+- **Services**: Contains the services classes that represent the business.
+    - `UserService.cs`: Class that represents a user services.
 
-1. Make sure you have a server that supports Classic ASP (such as IIS).
-2. Copy all project files to the server directory.
-3. Configure the server to point to the `src/index.asp` file as the entry point.
+- **Repository**: Contains the classes that represent the data from database.
+    - `UserRepository.cs`: Class that represents a user repository and methods to handle user data.
 
-## Usage
+- **Models**: Contains the model classes that represent the data.
+    - `User.cs`: Class that represents a user in the system.
 
-- Access the application through the browser using the URL corresponding to the directory where the project was installed.
-- The `index.asp` file will be loaded and execute the main application logic.
+- **Views**: Contains the Razor views that render the application pages.
+    - `Users/Index.cshtml`: View for the home page.
 
-## Contributions
-
-Feel free to contribute with improvements or corrections.
+- **Configurations**:
+    - `appsettings.json`: Contains the application settings, such as connection strings.
+    
+- **Main Files**:
+    - `Program.cs`: Entry point of the application.
+    - `Startup.cs`: Configuration of services and request pipeline.
+    - `my-dotnet-core-project.csproj`: Project file that contains dependency information.

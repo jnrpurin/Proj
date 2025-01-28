@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Initial page";
+}
+
+<h1>Welcome!</h1>
+<p>Initial page.</p>
+
+<h2>Users</h2>
+<ul>
+    @foreach (var user in Model.Users)
+    {
+        <li>@user.Username - @user.Name</li>
+    }
+</ul>
